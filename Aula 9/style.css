@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Quicksand:wght@400;700&display=swap');
+
+:root {
+  --cor-fundo: #08021a;
+  --cor-principal: #112B3C;
+  --cor-secundaria: #223a4b;
+  --cor-destaque: #ebb113;
+  --cor-texto: #F0F8FF;
+  --cor-estrela: #e5ff00;
+  --fonte-titulo: 'Handlee', cursive;
+  --fonte-texto: 'Quicksand', sans-serif;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background-image: radial-gradient(circle at top, #1e3c58 0%, var(--cor-fundo) 100%);
+  position: relative;
+}
+
+/* 🌌 Estrelas no fundo */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: radial-gradient(var(--cor-estrela) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+  animation: estrelasMovendo 60s linear infinite;
+  z-index: -1;
+}
+
+@keyframes estrelasMovendo {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 1000px; }
+}
+
+.caixa-principal {
+  background-color: var(--cor-principal);
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(253, 203, 88, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  color: var(--cor-destaque);
+  font-family: var(--fonte-titulo);
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px var(--cor-destaque), 0 0 20px var(--cor-destaque);
+}
+
+.frase-introducao {
+  font-style: italic;
+  font-size: 1.1em;
+  color: var(--cor-destaque);
+  margin-bottom: 20px;
+  font-family: var(--fonte-titulo);
+}
+
+button {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-texto);
+  border: none;
+  border-radius: 20px;
+  padding: 12px 20px;
+  margin: 10px 0;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--fonte-texto);
+}
+
+button:hover {
+  background-color: var(--cor-destaque);
+  color: var(--cor-principal);
+  transform: scale(1.05);
+}
+
+.caixa-resultado p {
+  font-style: italic;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+/* Estrelas decorativas adicionais */
+.estrela {
+    position: absolute;
+    width: 100px; /* 🌟 Estrelas maiores */
+    opacity: 0.7;
+    z-index: 0;
+    pointer-events: none;
+    animation: piscar 2s infinite ease-in-out;
+  }
+  
+  /* Posições variadas para espalhar as estrelas */
+  .estrela1 { top: 200px; left: 400px; }
+  .estrela2 { top: 150px; left: 250px; }
+  .estrela3 { top: 250px; left: 160px; }
+  .estrela5 { top: 300px; left: 300px; }
+  
+  .rodape-criador {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9em;
+  color: var(--cor-destaque);
+  font-family: var(--fonte-titulo);
+  opacity: 0.6;
+}
+
+.label-fonte {
+    font-family: var(--fonte-texto);
+    color: var(--cor-destaque);
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .seletor-fonte {
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    font-family: var(--fonte-texto);
+    margin-bottom: 20px;
+  }
+  
+  @keyframes piscar {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+  
+/* 💫 Efeito de brilho pulsante nos elementos principais */
+.caixa-principal::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  border-radius: 25px;
+  background: radial-gradient(circle, rgba(253,203,88,0.4) 0%, transparent 70%);
+  animation: brilhoCintilante 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes brilhoCintilante {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+@keyframes flutuarBrilho {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+}
+
+.particula-brilho {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--cor-destaque);
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: flutuarBrilho 3s infinite ease-in-out;
+  box-shadow: 0 0 15px var(--cor-destaque);
+  z-index: 0;
+}
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(253,203,88,0.5) 0%, transparent 80%);
+  transform: rotate(0deg);
+  animation: brilhoBotao 2s linear infinite;
+  z-index: 0;
+}
+
+
+
+h1, .frase-introducao {
+  text-shadow:
+    0 0 5px var(--cor-destaque),
+    0 0 10px var(--cor-destaque),
+    0 0 15px var(--cor-destaque),
+    0 0 20px var(--cor-destaque);
+  animation: ledPulse 2s infinite ease-in-out;
+}
+
